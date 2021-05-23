@@ -21,6 +21,11 @@ public class TryProcessing extends PApplet {
 
     @Override
     public void setup() {
+        initialseBalls();
+    }
+
+
+    private void initialseBalls() {
         for(int i=1;i<=BALLCOUNT;i++) {
             balls[i-1] = new Ball(i * HEIGHT / 5, DIAMETER, unitsperframe);
             incrementUnitsPerFrame();
