@@ -1,6 +1,6 @@
-import processing.core.PApplet;
 
-public class Ball extends PApplet{
+
+public class Ball{
     int position;
     int diameter;
     int ballSpeed;
