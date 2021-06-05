@@ -5,12 +5,12 @@ public class TryProcessing extends PApplet {
     public static final int WIDTH = 600;
     public static final int HEIGHT = 480;
     public static final int DIAMETER = 10;
-    int unitsperframe = 1;
-    public static final int BALLCOUNT=4;
-    Ball[] balls=new Ball[BALLCOUNT];
+    int speed = 1;
+    public static final int BALL_COUNT = 4;
+    Ball[] balls = new Ball[BALL_COUNT];
 
     public static void main(String[] args) {
-        PApplet.main("TryProcessing",args);
+        PApplet.main("TryProcessing", args);
     }
 
     @Override
@@ -21,32 +21,26 @@ public class TryProcessing extends PApplet {
 
     @Override
     public void setup() {
-        initialseBalls();
+        initialiseBalls();
     }
 
 
-    private void initialseBalls() {
-        for(int i=1;i<=BALLCOUNT;i++) {
-            balls[i-1] = new Ball(i * HEIGHT / 5, DIAMETER, unitsperframe);
-            incrementUnitsPerFrame();
+    private void initialiseBalls() {
+        for (int i = 1; i <= BALL_COUNT; i++) {
+            balls[i - 1] = new Ball(0, i * HEIGHT / 5, DIAMETER, speed);
+            incrementSpeed();
         }
     }
 
     @Override
     public void draw() {
-        for(int i=0;i<BALLCOUNT;i++){
-            moveBall(balls[i]);
+        for (int i = 0; i < BALL_COUNT; i++) {
+            balls[i].moveBall(this);
         }
     }
 
-    private void moveBall(Ball ball) {
-        ellipse(ball.ballSpeed, ball.position, ball.diameter, ball.diameter);
-        ball.incrementSpeed();
+    private void incrementSpeed() {
+        speed += 1;
     }
-
-    private void incrementUnitsPerFrame(){
-        unitsperframe+=1;
-    }
-
 
 }

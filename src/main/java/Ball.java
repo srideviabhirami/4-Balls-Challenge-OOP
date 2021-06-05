@@ -1,19 +1,24 @@
+import processing.core.PApplet;
 
+public class Ball {
+    private int xPosition;
+    private int yPosition;
+    private int diameter;
+    private int speed;
 
-public class Ball{
-    int position;
-    int diameter;
-    int ballSpeed;
-    int unitsPerFrame;
-
-    public Ball( int position, int diameter,int unitsPerFrame) {
-        this.position = position;
+    public Ball(int xPosition, int yPosition, int diameter, int speed) {
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
         this.diameter = diameter;
-        this.ballSpeed = 0;
-        this.unitsPerFrame = unitsPerFrame;
+        this.speed = speed;
     }
 
-    public void incrementSpeed(){
-        ballSpeed+=unitsPerFrame;
+    public void moveBall(PApplet pApplet) {
+        pApplet.ellipse(xPosition, yPosition, diameter, diameter);
+        incrementXPosition();
+    }
+
+    public void incrementXPosition() {
+        xPosition += speed;
     }
 }
